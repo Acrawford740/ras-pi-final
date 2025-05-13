@@ -3,6 +3,9 @@ from gpiozero import LED, Button
 import time
 import random
 
+# Set The Password People Are Trying To Input
+password = "IDK"
+
 # Set The Buttons
 left_button = Button(24)
 right_button = Button(23)
@@ -38,9 +41,21 @@ digits = {
     '9': ['A', 'B', 'C', 'F', 'G']
 }
 
+def LeftPushed():
+    pass
+
+def RightPushed():
+    pass
+
+def TopPushed():
+    pass
+
+def BottomPushed():
+    pass
+
 # Main Loop
 def loop():
-    
+    print(digits['2'])
 
 # Close All
 def destroy():
