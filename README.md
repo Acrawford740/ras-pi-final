@@ -20,3 +20,10 @@ Connections:
     Bottom Button - GPIO27
     Red LED - GPIO26
     Yellow LED - GPIO4
+
+Codeing Notes:
+# Turn Off All The Segments
+    for seg in segments.values():
+        seg.off()
+
+# 
