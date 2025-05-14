@@ -41,6 +41,7 @@ digits = {
     '9': ['A', 'B', 'C', 'F', 'G']
 }
 
+# Creating The Button Functions
 def LeftPushed():
     pass
 
