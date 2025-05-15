@@ -56,7 +56,12 @@ def BottomPushed():
 
 # Main Loop
 def loop():
-    print(digits['2'])
+    if password == "IDK":
+        yellow_led.on()
+    else:
+        red_led.on()
+        time.sleep(1)
+        red_led.off()
 
 # Close All
 def destroy():
