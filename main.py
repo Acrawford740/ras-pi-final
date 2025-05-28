@@ -1,7 +1,6 @@
 # Importing 
 from gpiozero import LED, Button
 import time
-import random
 
 # Set The Password People Are Trying To Input
 password = "IDK"
