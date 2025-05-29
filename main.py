@@ -3,7 +3,7 @@ from gpiozero import LED, Button
 import time
 
 # Set The Password People Are Trying To Input
-password = ""
+password = "80085"
 
 # Set The Buttons
 left_button = Button()
@@ -40,10 +40,6 @@ digits = {
     '9': ['A', 'B', 'C', 'F', 'G']
 }
 
-# Making The Speakers Do The Angry Sound
-
-# Making The Speakers Do The Happy Sound
-
 # Creating The Button Functions
 def LeftPushed():
     pass
@@ -59,11 +55,28 @@ def BottomPushed():
 
 # Main Loop
 def loop():
-    if password == "IDK":
+    if password == "Good":
         yellow_led.on()
+        # Play Happy Sound
+        headshakes = 0
+        while headshakes != 3:
+            headshakes += 1
+            # Nod Up Servo
+            time.sleep(.5)
+            # Nod Down Servo
+            time.sleep(.5)
+        #Center Head
+        yellow_led.off()
     else:
         red_led.on()
-        time.sleep(1)
+        headshakes = 0
+        while headshakes != 3:
+            headshakes += 1
+            # Nod Left Stepping
+            time.sleep(.5)
+            # Nod Right Stepping
+            time.sleep(.5)
+        # Center Head
         red_led.off()
 
 # Close All
@@ -74,6 +87,8 @@ def destroy():
     bottom_button.close()
     red_led.close()
     yellow_led.close()
+    # Close Servo
+    # Close Stepping Motor
 
 if __name__ == "__main__":
     try:
