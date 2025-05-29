@@ -3,17 +3,17 @@ from gpiozero import LED, Button
 import time
 
 # Set The Password People Are Trying To Input
-password = "IDK"
+password = ""
 
 # Set The Buttons
-left_button = Button(24)
-right_button = Button(23)
-top_button = Button(25)
-bottom_button = Button(27)
+left_button = Button()
+right_button = Button()
+top_button = Button()
+bottom_button = Button()
 
 # Set The LEDs
-red_led = LED(26)
-yellow_led = LED(4)
+red_led = LED()
+yellow_led = LED()
 
 # Setting The Pins For The Seven Segment Display
 segments = {
@@ -39,6 +39,10 @@ digits = {
     '8': ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
     '9': ['A', 'B', 'C', 'F', 'G']
 }
+
+# Making The Speakers Do The Angry Sound
+
+# Making The Speakers Do The Happy Sound
 
 # Creating The Button Functions
 def LeftPushed():
