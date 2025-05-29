@@ -10,7 +10,7 @@ needed items:
     7 Segment Clock Display
     Red & Yellow LEDs
     4 Buttons
-    motor
+    stepping motor
     2 220Ohm Resistors
     5 10KOhm Resistors
 
