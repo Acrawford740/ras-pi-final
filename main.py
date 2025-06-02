@@ -2,10 +2,10 @@
 from gpiozero import LED
 import time
 
-# Set The Password People Are Trying To Input
+# Setting The Password
 password = "80085"
 
-# Set The LEDs
+# Setting The LEDs
 red_led = LED(23)
 green_led = LED(18)
 
