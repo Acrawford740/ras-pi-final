@@ -1,5 +1,5 @@
 # Importing 
-from gpiozero import LED
+from gpiozero import LED, AngularServo
 import time
 
 # Setting The Password
