@@ -1,43 +1,22 @@
 # Importing 
-from gpiozero import LED, Button
+from gpiozero import LED
 import time
 
 # Set The Password People Are Trying To Input
 password = "80085"
 
-# Set The Buttons
-left_button = Button()
-right_button = Button()
-top_button = Button()
-bottom_button = Button()
-
 # Set The LEDs
-red_led = LED()
-yellow_led = LED()
+red_led = LED(23)
+green_led = LED(18)
 
 # Setting Stepping Motor
 
 
 # Setting Servo
 
-# Setting The LCD Board
-
-# Creating The Button Functions
-def LeftPushed():
-    pass
-
-def RightPushed():
-    pass
-
-def TopPushed():
-    pass
-
-def BottomPushed():
-    pass
-
 # Main Loop
 def loop():
-    if password == "Good":
+    if password == "80085":
         yellow_led.on()
         # Play Happy Sound
         headshakes = 0
@@ -63,10 +42,6 @@ def loop():
 
 # Close All
 def destroy():
-    left_button.close()
-    right_button.close()
-    top_button.close()
-    bottom_button.close()
     red_led.close()
     yellow_led.close()
     # Close Servo
