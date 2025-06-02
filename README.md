@@ -3,6 +3,10 @@ Final Project For IOT Andrew/Jack
 
 We are going to be making a program where you have to input a password and if you get it wrong a bobble head while shake it's head no and speakers or the buzzer will play an incorrect sound and if get the password correct the bobble head will shake it's head correct and it will play a correct sound.  We will connect a clock style 7 segment display and have buttons connected to it so if you push the top or bottom buttons it will change the number, but if you push the left or right buttons it will chage what number you are selected on.
 
+Andrew's Codeing Assignments
+
+Jack's Codeing Assignments
+
 needed items:
     Bobble Head
     Buzzer/Speakers
