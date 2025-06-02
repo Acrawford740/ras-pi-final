@@ -1,16 +1,14 @@
 # ras-pie-final
 Final Project For IOT Andrew/Jack
 
-We are going to be making a program where you have to input a password and if you get it wrong a bobble head while shake it's head no and speakers or the buzzer will play an incorrect sound and if get the password correct the bobble head will shake it's head correct and it will play a correct sound.  We will connect a clock style 7 segment display and have buttons connected to it so if you push the top or bottom buttons it will change the number, but if you push the left or right buttons it will chage what number you are selected on.
+We are going to be making a program where you have to input a password, and if you get it wrong a bobble head will shake its head no and speakers or the buzzer will play an incorrect sound. If you get the password correct, the bobblehead will shake its head correct and play a correct sound.  We will connect to GUIZero and have buttons in the GUI to type the password in.
 
 needed items:
     Bobble Head
     Buzzer/Speakers
     Sound Effects
-    7 Segment Clock Display
-    Red & Yellow LEDs
-    4 Buttons
-    stepping motor
+    Red & Green LEDs
+    stepper motor
     2 220Ohm Resistors
     5 10KOhm Resistors
 
