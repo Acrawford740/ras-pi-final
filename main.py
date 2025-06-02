@@ -15,30 +15,12 @@ bottom_button = Button()
 red_led = LED()
 yellow_led = LED()
 
-# Setting The Pins For The Seven Segment Display
-segments = {
-    'A': LED(),
-    'B': LED(),
-    'C': LED(),
-    'D': LED(),
-    'E': LED(),
-    'F': LED(),
-    'G': LED()
-}
+# Setting Stepping Motor
 
-# Setting The Digits
-digits = {
-    '0': ['A', 'B', 'C', 'D', 'E', 'F'],
-    '1': ['B', 'C'],
-    '2': ['A', 'B', 'D', 'E', 'G'],
-    '3': ['A', 'B', 'C', 'D', 'G'],
-    '4': ['B', 'C', 'F', 'G'],
-    '5': ['A', 'C', 'D', 'F', 'G'],
-    '6': ['A', 'C', 'D', 'E', 'F', 'G'],
-    '7': ['A', 'B', 'C'],
-    '8': ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
-    '9': ['A', 'B', 'C', 'F', 'G']
-}
+
+# Setting Servo
+
+# Setting The LCD Board
 
 # Creating The Button Functions
 def LeftPushed():
