@@ -34,6 +34,9 @@ def nodYes():
         time.sleep(.5)
     servo.angle = 0
 
+def nodNo():
+    pass
+
 # Main Loop
 def main():
     if password == "80085":
@@ -49,10 +52,7 @@ def main():
         headshakes = 0
         while headshakes != 3:
             headshakes += 1
-            # Nod Left Stepping
-            time.sleep(.5)
-            # Nod Right Stepping
-            time.sleep(.5)
+            nodNo()
         # Center Head
         red_led.off()
 
