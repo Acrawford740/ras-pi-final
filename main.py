@@ -59,9 +59,9 @@ def main():
 # Close All
 def destroy():
     red_led.close()
-    yellow_led.close()
-    # Close Servo
-    # Close Stepping Motor
+    green_led.close()
+    servo.close()
+    
 
 if __name__ == "__main__":
     try:
