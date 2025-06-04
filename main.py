@@ -10,7 +10,12 @@ red_led = LED(23)
 green_led = LED(18)
 
 # Setting Stepping Motor
-
+myGPIO = 21
+SERVO_DELAY_SEC = 0.001
+myCorrection = 0.0
+maxPW = (2.5 + myCorrection)/1000
+minPW = (2.5 + myCorrection)/1000
+servo = AngularServo(myGPIO, initial_angle=0, min_angle=0, max_angle=360, min_pulse_width = minPW, max_pulse_width = maxPW)
 
 # Setting Servo
 
@@ -22,11 +27,15 @@ def loop():
         headshakes = 0
         while headshakes != 3:
             headshakes += 1
-            # Nod Up Servo
+            for angle in range(0, 91, 1):
+                servo.angle = angle
+                time.sleep(SERVO_DELAY_SEC)
             time.sleep(.5)
-            # Nod Down Servo
+            for angle in range(90, -1. -1):
+                servo.angle = angle
+                time.sleep(SERVO_DELAY_SEC)
             time.sleep(.5)
-        #Center Head
+        servo.angle = 0
         yellow_led.off()
     else:
         red_led.on()
