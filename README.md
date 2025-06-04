@@ -18,10 +18,11 @@ Jack's Codeing Assignments
 
 needed items:
     Bobble Head
-    Buzzer/Speakers
+    Speakers
     Sound Effects
+    Images
     Red & Green LEDs
-    stepper motor
+    2 Servo
 
 Connections:
     Red LED - GPIO23
