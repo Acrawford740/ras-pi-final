@@ -1,8 +1,8 @@
 import pygame
 import time
 
-def load(song):
-    pygame.mixer.music.load("song")
+# def load(song):
+#     pygame.mixer.music.load("song")
 
 def play():
     pygame.mixer.music.play()
