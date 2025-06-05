@@ -11,7 +11,7 @@ red_led = LED(23)
 green_led = LED(18)
 
 # Setting Servo Up
-GPIOsp = #
+GPIOup = #
 SERVO_DELAY_SEC = 0.001
 myCorrection = 0.0
 maxPW = (2.5 + myCorrection)/1000
@@ -52,15 +52,13 @@ def nodNo():
 
 def correct():
     green_led.on()
-    # play audio
-    # have animation on guizero shoot confetti
+    playsound()
     time.sleep(3)
     green_led.off()
 
 def incorrect():
     red_led.on()
     # play audio
-    # put family fued X on screen
     time.sleep(3)
     red_led.off()
 
