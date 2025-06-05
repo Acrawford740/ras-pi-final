@@ -1,5 +1,6 @@
 # Importing 
 from gpiozero import LED, AngularServo
+from playsound import playsound
 import time
 
 # Setting The Password
