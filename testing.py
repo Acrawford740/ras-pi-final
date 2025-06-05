@@ -1,7 +1,7 @@
 import pygame
 import time
 
-# def load(song):
+# def Load(song):
 #     pygame.mixer.music.load("song")
 
 def play():
@@ -11,5 +11,5 @@ def play():
 
 pygame.init()
 pygame.mixer.init()
-load("/sound-effects/extremely-loud-incorrect-buzzer_0cDaG20.mp3")
+pygame.mixer.music.load("sound-effects/extremely-loud-incorrect-buzzer_0cDaG20.mp3")
 play()

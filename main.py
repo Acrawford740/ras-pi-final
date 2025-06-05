@@ -3,9 +3,6 @@ from gpiozero import LED, AngularServo
 from playsound import playsound
 import time
 
-# Setting The Password
-password = "80085"
-
 # Setting The LEDs
 red_led = LED(23)
 green_led = LED(18)
@@ -21,12 +18,6 @@ servoUp = AngularServo(GPIOup, initial_angle=0, min_angle=0, max_angle=360, min_
 # Settign Servo Sideways
 GPIOside = #
 servoSide = AngularServo(GPIOside, initial_angle=0, min_angle=0, max_angle=360, min_pulse_width=minPW, max_pulse_width=maxPW)
-
-# Setting Stepping Motor
-motorPins = (24, 12, 16, 20)
-motors = list(map(lambda pin: OutputDevice(pin), motorPins))
-CCWStep = (0x01, 0x02, 0x04, 0x08)
-CWStep = (0x01, 0x02, 0x04, 0x08)
 
 def nodYes():
     for angle in range(0, 91, 1):
