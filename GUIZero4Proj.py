@@ -1,10 +1,11 @@
 from guizero import App, Text, TextBox, PushButton
-
+from playsound import playsound
 correctPass = "80085"
 
 def passwordCheck():
     if textEntry.value == correctPass:
         result.value = "Correct!"
+        playsound('.\sound-effects\loud-correct-buzzer.mp3')
     else:
         result.value = "Incorrect!"
 
