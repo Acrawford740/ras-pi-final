@@ -8,7 +8,7 @@ red_led = LED(23)
 green_led = LED(18)
 
 # Setting Servo Up
-GPIOup = #
+GPIOup = 5
 SERVO_DELAY_SEC = 0.001
 myCorrection = 0.0
 maxPW = (2.5 + myCorrection)/1000
@@ -16,7 +16,7 @@ minPW = (2.5 + myCorrection)/1000
 servoUp = AngularServo(GPIOup, initial_angle=0, min_angle=0, max_angle=360, min_pulse_width = minPW, max_pulse_width = maxPW)
 
 # Settign Servo Sideways
-GPIOside = #
+GPIOside = 6
 servoSide = AngularServo(GPIOside, initial_angle=0, min_angle=0, max_angle=360, min_pulse_width=minPW, max_pulse_width=maxPW)
 
 def nodYes():
@@ -43,13 +43,15 @@ def nodNo():
 
 def correct():
     green_led.on()
-    playsound()
+    playsound('sound-effects/loud-correct-buzzer.mp3')
+    nodYes()
     time.sleep(3)
     green_led.off()
 
 def incorrect():
     red_led.on()
-    # play audio
+    playsound('sound-effects/extremely-loud-incorrect-buzzer_0cDaG20.mp3')
+    nodNo()
     time.sleep(3)
     red_led.off()
 
@@ -78,6 +80,6 @@ def destroy():
 
 if __name__ == "__main__":
     try:
-        loop()
+        main()
     except KeyboardInterrupt:
         destroy()
