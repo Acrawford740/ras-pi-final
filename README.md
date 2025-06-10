@@ -6,13 +6,13 @@ We are going to be making a program where you have to input a password, and if y
 $ Means Completed
 ? Means Mostly Completed
 
-Andrew's Codeing Assignments
+Andrew's Coding Assignments
     LED 
     Motor
     Servo
     Password Check
 
-Jack's Codeing Assignments
+Jack's Coding Assignments
     GUI
     Speaker
 
