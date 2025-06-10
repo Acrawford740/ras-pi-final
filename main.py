@@ -31,14 +31,13 @@ def nodYes():
     servoUp.angle = 0
 
 def nodNo():
-    for angle in range(0, 126, 1):
-        servoSide.angle = angle
-        time.sleep(SERVO_DELAY_SEC)
-    time.sleep(.5)
-    for angle in range(126, -40, -1):
-        servoSide.angle = angle
-        time.sleep(SERVO_DELAY_SEC)
-    time.sleep(.5)
+    times = 0
+    while times != 5:
+        times += 1
+        servoSide.angle = 40
+        time.sleep(1)
+        servoSide.angle = -40
+        time.sleep(1)
     servoSide.angle = 0
 
 def correct():
