@@ -12,9 +12,9 @@ def nodYes():
     timesYes = 0
     while timesYes != 5:
         timesYes += 1
-        servoUp.angle = 40
+        servoUp.angle = 80
         time.sleep(1)
-        servoUp.angle = -40
+        servoUp.angle = -20
         time.sleep(1)
     servoUp.angle = 0
 
