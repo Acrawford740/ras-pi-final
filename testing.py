@@ -17,6 +17,9 @@ def nodYes():
         time.sleep(1)
     servoUp.angle = 0
 
+def destroy():
+    servoUp.clsoe()
+
 if __name__ == "__main__":
     try:
         nodYes()
