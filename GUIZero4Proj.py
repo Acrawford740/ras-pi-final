@@ -5,10 +5,10 @@ correctPass = "80085"
 def passwordCheck():
     if textEntry.value == correctPass:
         result.value = "Correct!"
-        playsound('.\sound-effects\loud-correct-buzzer.mp3')
+        playsound.playsound('.\sound-effects\loud-correct-buzzer.mp3')
     else:
         result.value = "Incorrect!"
-        playsound('sound-effects/extremely-loud-incorrect-buzzer_0cDaG20.mp3')
+        playsound.playsound('.\sound-effects/extremely-loud-incorrect-buzzer_0cDaG20.mp3')
 
 app = App(title = "Password Playtime!",width=300, height=200)
 
