@@ -11,6 +11,7 @@ servoUp = AngularServo(GPIOup, initial_angle=0, min_angle=-180, max_angle=180, m
 def nodYes():
     timesYes = 0
     while timesYes != 5:
+        timesYes += 1
         servoUp.angle = 40
         time.sleep(1)
         servoUp.angle = -40
