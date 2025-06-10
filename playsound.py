@@ -10,7 +10,7 @@ def noises():
         playsound('sound-effects/loud-correct-buzzer.mp3')
         time.sleep(2)
 
-if __name == "__main__":
+if __name__ == "__main__":
     try:
         noises()
     except KeyboardInterrupt:
