@@ -19,7 +19,7 @@ def nodYes():
     servoUp.angle = 0
 
 def destroy():
-    servoUp.clsoe()
+    servoUp.close()
 
 if __name__ == "__main__":
     try:
