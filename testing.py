@@ -13,7 +13,7 @@ servoSide = AngularServo(GPIOside, initial_angle=0, min_angle=-180, max_angle=18
 def nodNo():
     timesNO = 0
     while timesNO != 5:
-        times += 1
+        timesNO += 1
         servoSide.angle = 40
         time.sleep(1)
         servoSide.angle = -40
