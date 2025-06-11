@@ -16,11 +16,11 @@ SERVO_DELAY_SEC = 0.001
 myCorrection = 0.0
 maxPW = (2.5 + myCorrection)/1000
 minPW = (2.5 + myCorrection)/1000
-servoUp = AngularServo(GPIOup, initial_angle=0, min_angle=0, max_angle=360, min_pulse_width = minPW, max_pulse_width = maxPW)
+servoUp = AngularServo(GPIOup, initial_angle=0, min_angle=-180, max_angle=180, min_pulse_width = minPW, max_pulse_width = maxPW)
 
 # Settign Servo Sideways
 GPIOside = 6
-servoSide = AngularServo(GPIOside, initial_angle=0, min_angle=0, max_angle=360, min_pulse_width=minPW, max_pulse_width=maxPW)
+servoSide = AngularServo(GPIOside, initial_angle=0, min_angle=-180, max_angle=180, min_pulse_width=minPW, max_pulse_width=maxPW)
 
 def passwordCheck():
     if textEntry.value == correctPass:
@@ -32,31 +32,27 @@ def passwordCheck():
         wrongbuzz()
 
 def wrongbuzz():
-# Starting the mixer
-        mixer.init()
-# Loading the song
-        mixer.music.load('/home/jack/CODE/ras-pi-final/sound-effects/incorrect_buzzer.mp3')
+# Play The Incorrect Sound Effect
+    mixer.init()
+    mixer.music.load('/home/jack/CODE/ras-pi-final/sound-effects/incorrect_buzzer.mp3')
+    mixer.music.set_volume(0.7)
+    red_led.on()
+    mixer.music.play()
+    # Makes The Bobble Head Nod No
+    nodNo()
+    red_led.off()
+    time.sleep(2)
 
-# Setting the volume
-        mixer.music.set_volume(0.7)
-
-# Start playing the song
-        mixer.music.play()
-        time.sleep(2)
 
 def rightbuzz():
-# Starting the mixer
-        mixer.init()
-
-# Loading the song
-        mixer.music.load('/home/jack/CODE/ras-pi-final/sound-effects/loud-correct-buzzer.mp3')
-
-# Setting the volume
-        mixer.music.set_volume(0.7)
-
-# Start playing the song
-        mixer.music.play()
-        time.sleep(2)
+# Play The Correct Sound Effect
+    mixer.init()
+    mixer.music.load('/home/jack/CODE/ras-pi-final/sound-effects/loud-correct-buzzer.mp3')
+    green_led.on()
+    mixer.music.play()
+    nodYes()
+    green_led.off()
+    time.sleep(2)
 
 def nodYes():
     timesYes = 0
@@ -78,33 +74,6 @@ def nodNo():
         time.sleep(1)
     servoSide.angle = 0
 
-def correct():
-    green_led.on()
-    nodYes()
-    time.sleep(3)
-    green_led.off()
-
-def incorrect():
-    red_led.on()
-    nodNo()
-    time.sleep(3)
-    red_led.off()
-
-# Main Loop
-def main():
-    if password == "80085":
-        correct()
-        headshakes = 0
-        while headshakes != 3:
-            headshakes += 1
-            nodYes()
-    else:
-        incorrect()
-        headshakes = 0
-        while headshakes != 3:
-            headshakes += 1
-            nodNo()
-
 # Close All
 def destroy():
     red_led.close()
@@ -121,9 +90,3 @@ checkButton = PushButton(app, text="Check Password", command=passwordCheck)
 result = Text(app,text="")
 
 app.display()
-
-if __name__ == "__main__":
-    try:
-        main()
-    except KeyboardInterrupt:
-        destroy()
