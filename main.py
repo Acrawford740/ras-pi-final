@@ -1,8 +1,10 @@
 # Importing 
 from guizero import App,TextBox,PushButton,Text, Picture
 from gpiozero import LED, AngularServo
+import os
 from pygame import mixer
 import time
+os.environ["GPIOZERO_PIN_FACTORY"] = 'pigpio'
 
 correctPass = "80085"
 
@@ -10,25 +12,30 @@ correctPass = "80085"
 red_led = LED(23)
 green_led = LED(18)
 
+
+
 # Setting Servo Up
 GPIOup = 5
 SERVO_DELAY_SEC = 0.001
 myCorrection = 0.0
-maxPW = (2.5 + myCorrection)/1000
-minPW = (2.5 + myCorrection)/1000
-servoUp = AngularServo(GPIOup, initial_angle=0, min_angle=-180, max_angle=180, min_pulse_width = minPW, max_pulse_width = maxPW)
+minPW = 0.0006
+maxPW = 0.0024
+servoUp = AngularServo(GPIOup, initial_angle=-60, min_angle=-180, max_angle=180, min_pulse_width = minPW, max_pulse_width = maxPW)
 
 # Settign Servo Sideways
 GPIOside = 6
-servoSide = AngularServo(GPIOside, initial_angle=0, min_angle=-180, max_angle=180, min_pulse_width=minPW, max_pulse_width=maxPW)
+servoSide = AngularServo(GPIOside, initial_angle=-30, min_angle=-180, max_angle=180, min_pulse_width=minPW, max_pulse_width=maxPW)
 
 def passwordCheck():
     if textEntry.value == correctPass:
         result.value = "Correct!"
+        wrongpic.hide()
+        rightpic.show()
         rightbuzz()
     else:
         result.value = "Incorrect!"
-        wrongpic = Picture(app, image="images/FuedX-removebg-preview.png", height=70, width = 50)
+        rightpic.hide()
+        wrongpic.show()
         wrongbuzz()
 
 def wrongbuzz():
@@ -58,28 +65,24 @@ def nodYes():
     timesYes = 0
     while timesYes != 5:
         timesYes += 1
-        servoUp.angle = 10
+        servoUp.angle = 0
         time.sleep(1)
         servoUp.angle = -80
         time.sleep(1)
-    servoUp.angle = 5
+    servoUp.angle = -60
 
 def nodNo():
     timesNo = 0
     while timesNo != 5:
         timesNo += 1
-        servoSide.angle = 40
-        time.sleep(1)
-        servoSide.angle = -40
-        time.sleep(1)
-    servoSide.angle = 0
+        servoSide.angle = 20
+        time.sleep(.5)
+        servoSide.angle = -60
+    time.sleep(.5)
+    servoSide.angle = -30
 
-# Close All
-def destroy():
-    red_led.close()
-    green_led.close()
-    servoUp.close()
-    servoSide.close()
+# Close Allresult = Text(app,text="")
+
     
 app = App(title = "Password Playtime!",width=300, height=200)
 
@@ -89,4 +92,9 @@ checkButton = PushButton(app, text="Check Password", command=passwordCheck)
 
 result = Text(app,text="")
 
+rightpic = Picture(app, image="images/animations/Confetti.gif", height=100, width = 100)
+wrongpic = Picture(app, image="images/FuedX-removebg-preview.png", height=70, width = 50)
+
+wrongpic.hide()
+rightpic.hide()
 app.display()

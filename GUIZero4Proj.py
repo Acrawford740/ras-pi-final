@@ -6,11 +6,13 @@ correctPass = "80085"
 def passwordCheck():
     if textEntry.value == correctPass:
         result.value = "Correct!"
+        rightpic.show()
         rightbuzz()
     else:
+        wrongpic.show()
         result.value = "Incorrect!"
-        wrongpic = Picture(app, image="images/FuedX-removebg-preview.png", height=70, width = 50)
         wrongbuzz()
+
 
 def wrongbuzz():
 # Starting the mixer
@@ -47,4 +49,10 @@ checkButton = PushButton(app, text="Check Password", command=passwordCheck)
 
 result = Text(app,text="")
 
+rightpic = Picture(app, image="images/animations/Confetti.gif", height=100, width = 100)
+wrongpic = Picture(app, image="images/FuedX-removebg-preview.png", height=70, width = 50)
+
+
+wrongpic.hide()
+rightpic.hide()
 app.display()
