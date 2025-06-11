@@ -1,7 +1,10 @@
 # Importing 
+from guizero import App,TextBox,PushButton,Text, Picture
 from gpiozero import LED, AngularServo
-from playsound import playsound
+from pygame import mixer
 import time
+
+correctPass = "80085"
 
 # Setting The LEDs
 red_led = LED(23)
@@ -19,21 +22,56 @@ servoUp = AngularServo(GPIOup, initial_angle=0, min_angle=0, max_angle=360, min_
 GPIOside = 6
 servoSide = AngularServo(GPIOside, initial_angle=0, min_angle=0, max_angle=360, min_pulse_width=minPW, max_pulse_width=maxPW)
 
+def passwordCheck():
+    if textEntry.value == correctPass:
+        result.value = "Correct!"
+        rightbuzz()
+    else:
+        result.value = "Incorrect!"
+        wrongpic = Picture(app, image="images/FuedX-removebg-preview.png", height=70, width = 50)
+        wrongbuzz()
+
+def wrongbuzz():
+# Starting the mixer
+        mixer.init()
+# Loading the song
+        mixer.music.load('/home/jack/CODE/ras-pi-final/sound-effects/incorrect_buzzer.mp3')
+
+# Setting the volume
+        mixer.music.set_volume(0.7)
+
+# Start playing the song
+        mixer.music.play()
+        time.sleep(2)
+
+def rightbuzz():
+# Starting the mixer
+        mixer.init()
+
+# Loading the song
+        mixer.music.load('/home/jack/CODE/ras-pi-final/sound-effects/loud-correct-buzzer.mp3')
+
+# Setting the volume
+        mixer.music.set_volume(0.7)
+
+# Start playing the song
+        mixer.music.play()
+        time.sleep(2)
+
 def nodYes():
-    for angle in range(0, 91, 1):
-        servoUp.angle = angle
-        time.sleep(SERVO_DELAY_SEC)
-    time.sleep(.5)
-    for angle in range(90, -1. -1):
-        servoUp.angle = angle
-        time.sleep(SERVO_DELAY_SEC)
-    time.sleep(.5)
-    servoUp.angle = 0
+    timesYes = 0
+    while timesYes != 5:
+        timesYes += 1
+        servoUp.angle = 10
+        time.sleep(1)
+        servoUp.angle = -80
+        time.sleep(1)
+    servoUp.angle = 5
 
 def nodNo():
-    times = 0
-    while times != 5:
-        times += 1
+    timesNo = 0
+    while timesNo != 5:
+        timesNo += 1
         servoSide.angle = 40
         time.sleep(1)
         servoSide.angle = -40
@@ -42,14 +80,12 @@ def nodNo():
 
 def correct():
     green_led.on()
-    playsound('sound-effects/loud-correct-buzzer.mp3')
     nodYes()
     time.sleep(3)
     green_led.off()
 
 def incorrect():
     red_led.on()
-    playsound('sound-effects/extremely-loud-incorrect-buzzer_0cDaG20.mp3')
     nodNo()
     time.sleep(3)
     red_led.off()
@@ -76,6 +112,15 @@ def destroy():
     servoUp.close()
     servoSide.close()
     
+app = App(title = "Password Playtime!",width=300, height=200)
+
+textEntry = TextBox(app, text="", hide_text=True)
+
+checkButton = PushButton(app, text="Check Password", command=passwordCheck)
+
+result = Text(app,text="")
+
+app.display()
 
 if __name__ == "__main__":
     try:
